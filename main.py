@@ -40,9 +40,8 @@ def get_filename(filename: str, filters_: dict, args: tuple):
 
 def process_transformations():
     # calling engine, although we'd need to call filters directly ideally (as custom logic is implemented there)
-
-    for filters in uk_config:
-        for filename in os.listdir("./test_images"):
+    for filename in os.listdir("./test_images"):
+        for filters in uk_config:
             with open(f"./test_images/{filename}", "rb") as image:
                 context.modules.engine.load(image.read(), None)
 
