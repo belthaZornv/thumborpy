@@ -5,7 +5,19 @@ from thumbor.context import Context
 from thumbor.filters import FiltersFactory
 from thumbor.server import get_config, configure_log, get_importer
 
-# use_environment to enable gathering of settings through env
+uk_config = [
+    {
+        "brightness": 90
+    },
+    {
+        "rotate": 90,
+    },
+    {
+        "blur": 10,
+    },
+]
+
+# use_environment=True to enable gathering of settings through env
 config = get_config(config_path=".", use_environment=False)
 
 configure_log(config, "DEBUG")
@@ -15,20 +27,6 @@ importer = get_importer(config)
 context = Context(server=None, config=config, importer=importer)
 
 available_filters = FiltersFactory(context.modules.filters).filter_classes_map
-
-# read config
-uk_config = [
-    {
-        "rotate": 50,
-        "brightness": 90
-    },
-    {
-        "rotate": 50,
-    },
-    {
-        "blur": 10,
-    },
-]
 
 
 def get_filename(filename: str, filters_: dict, value: int):
