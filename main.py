@@ -30,7 +30,7 @@ available_filters = FiltersFactory(context.modules.filters).filter_classes_map
 
 
 def get_filename(filename: str, filters_: dict, value: int):
-    new_filename = f"{','.join(filters_.keys())}"
+    new_filename = ','.join(filters_.keys())
 
     if value:
         new_filename += f"_{value}"
